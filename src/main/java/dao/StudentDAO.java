@@ -10,9 +10,9 @@ import java.sql.Connection;
 import model.Student;
 
 public class StudentDAO {
-	private String jdbcURL = "jdbc:mysql://localhost:3306/student_management";
+	private String jdbcURL = "jdbc:mysql://caboose.proxy.rlwy.net:14391/railway?useSSL=false&allowPublicKeyRetrieval=true";
 	private String jdbcUsername = "root";
-	private String jdbcPassword = "Mysql@123";
+	private String jdbcPassword = "JLXCPJQaYkSSOLsFLXupHdjDoHlbILUo";
 	
 	private static final String INSERT_STUDENT = "INSERT INTO students(name,email,course) VALUES(?,?,?)";
 	private static final String SELECT_ALL = "SELECT * FROM students ORDER BY name ASC";
