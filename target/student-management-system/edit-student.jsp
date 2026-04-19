@@ -79,7 +79,7 @@ body {
 					</div>
 
 					<div class="d-flex justify-content-between">
-						<a href="student" class="btn btn-secondary">⬅ Back</a>
+						<a href="student" class="btn btn-secondary">Back</a>
 						<button type="submit" class="btn btn-success">Update
 							Student</button>
 					</div>
