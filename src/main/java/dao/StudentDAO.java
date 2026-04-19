@@ -14,7 +14,8 @@ public class StudentDAO {
 	private String port = System.getenv("MYSQLPORT");
 	private String database = System.getenv("MYSQLDATABASE");
 
-	private String jdbcURL = "jdbc:mysql://" + host + ":" + port + "/" + database;
+	private String jdbcURL = "jdbc:mysql://" + host + ":" + port + "/" + database 
+			+ "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 	private String jdbcUsername = System.getenv("MYSQLUSER");
 	private String jdbcPassword = System.getenv("MYSQLPASSWORD");
 	
