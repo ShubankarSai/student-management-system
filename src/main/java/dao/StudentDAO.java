@@ -10,9 +10,13 @@ import java.sql.Connection;
 import model.Student;
 
 public class StudentDAO {
-	private String jdbcURL = "DB_URL";
-	private String jdbcUsername = "DB_USER";
-	private String jdbcPassword = "DB_PASSWORD";
+	private String host = System.getenv("MYSQLHOST");
+	private String port = System.getenv("MYSQLPORT");
+	private String database = System.getenv("MYSQLDATABASE");
+
+	private String jdbcURL = "jdbc:mysql://" + host + ":" + port + "/" + database;
+	private String jdbcUsername = System.getenv("MYSQLUSER");
+	private String jdbcPassword = System.getenv("MYSQLPASSWORD");
 	
 	private static final String INSERT_STUDENT = "INSERT INTO students(name,email,course) VALUES(?,?,?)";
 	private static final String SELECT_ALL = "SELECT * FROM students ORDER BY name ASC";
@@ -21,14 +25,17 @@ public class StudentDAO {
 	private static final String SELECT_BY_ID = "SELECT * FROM students WHERE id=?";
 	
 	protected Connection getConnection() {
-		Connection con = null;
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			con = (Connection) DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return con;
+	    Connection con = null;
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+
+	        System.out.println("Connecting to DB: " + jdbcURL); // debug
+
+	        con = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return con;
 	}
 	
 	//Insert
