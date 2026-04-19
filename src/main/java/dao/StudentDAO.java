@@ -26,17 +26,34 @@ public class StudentDAO {
 	
 	protected Connection getConnection() {
 	    Connection con = null;
+
 	    try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 
-	        System.out.println("Connecting to DB: " + jdbcURL); // debug
+	        String host = System.getenv("MYSQLHOST");
+	        String port = System.getenv("MYSQLPORT");
+	        String db = System.getenv("MYSQLDATABASE");
+	        String user = System.getenv("MYSQLUSER");
+	        String pass = System.getenv("MYSQLPASSWORD");
 
-	        con = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+	        String url = "jdbc:mysql://" + host + ":" + port + "/" + db + "?useSSL=false";
+
+	        System.out.println("Connecting to DB...");
+	        System.out.println("URL: " + url);
+	        System.out.println("User: " + user);
+
+	        con = DriverManager.getConnection(url, user, pass);
+
+	        System.out.println("DB Connected Successfully");
+
 	    } catch (Exception e) {
+	        System.out.println("DB CONNECTION FAILED");
 	        e.printStackTrace();
 	    }
+
 	    return con;
 	}
+	
 	
 	//Insert
 	public void insertStudent(Student student) {
