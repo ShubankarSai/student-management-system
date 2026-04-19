@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.StudentDAO;
 import model.Student;
 
-@WebServlet("/student")
+@WebServlet({"/", "/student"})
 public class StudentServlet extends HttpServlet{
 	private StudentDAO dao;
 	
