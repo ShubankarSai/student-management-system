@@ -21,7 +21,13 @@ public class StudentServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		
+		String path = req.getServletPath();
+		if (path.equals("/") || path.equals("")) {
+			resp.sendRedirect("student");
+			return;
+		}
 	    String action = req.getParameter("action");
 
 	    //Handle actions FIRST (edit/delete)
