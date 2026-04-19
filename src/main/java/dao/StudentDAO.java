@@ -31,19 +31,11 @@ public class StudentDAO {
 	    try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 
-	        String host = System.getenv("MYSQLHOST");
-	        String port = System.getenv("MYSQLPORT");
-	        String db = System.getenv("MYSQLDATABASE");
-	        String user = System.getenv("MYSQLUSER");
-	        String pass = System.getenv("MYSQLPASSWORD");
-
-	        String url = "jdbc:mysql://" + host + ":" + port + "/" + db + "?useSSL=false";
-
 	        System.out.println("Connecting to DB...");
-	        System.out.println("URL: " + url);
-	        System.out.println("User: " + user);
+	        System.out.println("URL: " + jdbcURL);
+	        System.out.println("User: " + jdbcUsername);
 
-	        con = DriverManager.getConnection(url, user, pass);
+	        con = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 
 	        System.out.println("DB Connected Successfully");
 
